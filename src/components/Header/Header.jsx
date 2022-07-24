@@ -9,7 +9,7 @@ export const Header = ({ searchTerm, handleInput }) => {
     <div className='Header'>
       <Link to={'/'} className='name'>BEER STORE</Link>
       <input
-        type='text'
+        type='search'
         value={searchTerm}
         onChange={handleInput}
         placeholder='Search for your beer...'

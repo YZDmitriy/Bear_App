@@ -21,9 +21,11 @@ function App() {
   }, []);
 
   const handleInput = (event) => {
-    const inputValue = event.target.value.toLowerCase();
-    setSearchTerm(inputValue);
+    // const inputValue = event.target.value.toLowerCase();
+    setSearchTerm(event.target.value);
   };
+
+
 
   const filterResults = beersArray.filter((result) => {
     let beerHasMatched = true;
@@ -35,11 +37,9 @@ function App() {
     return beerHasMatched;
   });
 
-  console.log('===========', beersArray);
-
   return (
     <>
-      <Header handleInput={handleInput} searchTerm={searchTerm} />
+      <Header handleInput={handleInput}  searchTerm={searchTerm} />
       <Routes>
         <Route path='/' element={<BeersList beersArray={filterResults} />} />
         <Route
