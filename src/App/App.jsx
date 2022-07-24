@@ -1,55 +1,55 @@
-// import React, { useState, useEffect } from 'react';
-// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { BeerDetals } from '../components/BeerDetals/BeerDetals';
+import { BeersList } from '../components/BeersList/BeersList';
 import { Header } from '../components/Header/Header';
 import './App.scss';
 
-
-
 function App() {
+  const [beersArray, setBeersArray] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
-    // const [beersArray, setBeersArray] = useState([])
-    // const [searchTerm, setSearchTerm] = useState('') 
-  
-    // useEffect(() => {
-    //     fetch('https://api.punkapi.com/v2/beers?per_page=80') 
-    //     .then(response => {return response.json()})
-    //     .then(jsonObject => {
-    //         const beersObj = jsonObject;
-    //         setBeersArray(beersObj)
-    //     })
-    // }, [])
+  useEffect(() => {
+    fetch('https://api.punkapi.com/v2/beers?per_page=80')
+      .then((response) => {
+        return response.json();
+      })
+      .then((jsonObject) => {
+        const beersObj = jsonObject;
+        setBeersArray(beersObj);
+      });
+  }, []);
 
-    // const handleInput = event => {
-    //     const inputValue = event.target.value.toLowerCase();
-    //     setSearchTerm(inputValue)
-    // }
+  const handleInput = (event) => {
+    const inputValue = event.target.value.toLowerCase();
+    setSearchTerm(inputValue);
+  };
 
-    // const filterResults = beersArray.filter(result => {
-    //     let beerHasMatched = true;
-      
-    //     if (searchTerm) {
-    //       beerHasMatched = result.name.toLowerCase().includes(searchTerm);
-    //     }
-      
-      
-    //     return beerHasMatched;
-    //   });
+  const filterResults = beersArray.filter((result) => {
+    let beerHasMatched = true;
+
+    if (searchTerm) {
+      beerHasMatched = result.name.toLowerCase().includes(searchTerm);
+    }
+
+    return beerHasMatched;
+  });
+
+  console.log('===========', beersArray);
 
   return (
-    // <Router>
-        <div className="App">
-            <Header />
-            {/* <Switch>
-                <Route path="/beerinfo/:id">
-                    {beersArray.length > 0 && <BeerInfo beersArray={beersArray}/>}
-                </Route>
-                <Route path="/">
-                    <SearchBox handleInput={handleInput} searchTerm={searchTerm}/>
-                    <BeersList beersArray={filterResults} />
-                </Route> 
-            </Switch> */}
-        </div>
-    // </Router>
+    <>
+      <Header handleInput={handleInput} searchTerm={searchTerm} />
+      <Routes>
+        <Route path='/' element={<BeersList beersArray={filterResults} />} />
+        <Route
+          path='/:id'
+          element={
+            beersArray.length > 0 && <BeerDetals beersArray={beersArray} />
+          }
+        />
+      </Routes>
+    </>
   );
 }
 

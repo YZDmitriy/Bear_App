@@ -6,7 +6,7 @@ export const Header = ({ searchTerm, handleInput }) => {
 
   return (
     <div className='Header'>
-      <span>BEER</span>
+      <div>BEER</div>
       <input
         type='text'
         value={searchTerm}
