@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Header.scss';
 
 export const Header = ({ searchTerm, handleInput }) => {
@@ -6,7 +7,7 @@ export const Header = ({ searchTerm, handleInput }) => {
 
   return (
     <div className='Header'>
-      <div>BEER</div>
+      <Link to={'/'} className='name'>BEER STORE</Link>
       <input
         type='text'
         value={searchTerm}

@@ -1,9 +1,11 @@
 import React from 'react';
 import { useParams } from 'react-router';
 import { useNavigate } from 'react-router-dom';
+import { IoArrowBack } from 'react-icons/io5';
 import './BeerDetals.scss';
 
 export const BeerDetals = ({ beersArray }) => {
+  const navigate = useNavigate();
   const { id } = useParams();
 
   const beersArr = beersArray.filter((beer) => {
@@ -14,7 +16,9 @@ export const BeerDetals = ({ beersArray }) => {
 
   return (
     <div className='beer-page'>
-      {/* <Link to="/" className="back-home">&#8592; Back to HomePage</Link> */}
+      <button onClick={() => navigate(-1)}>
+        <IoArrowBack /> Back to Home Page
+      </button>
 
       <div className='beer-info'>
         <img src={singleBeer.image_url} className='beer-info__img' alt='' />
@@ -34,9 +38,6 @@ export const BeerDetals = ({ beersArray }) => {
           </p>
         </div>
       </div>
-      <Button onClick={() => navigate(-1)}>
-        <IoArrowBack /> Back
-      </Button>
     </div>
   );
 };

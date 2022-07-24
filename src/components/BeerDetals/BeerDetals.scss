@@ -35,3 +35,16 @@
 .beer-info__column > p {
   padding-top: 30px;
 }
+
+button {
+  padding: 0 50px;
+  background-color: black;
+  color: white;
+  line-height: 2.5;
+  border-radius: 10px;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+}
