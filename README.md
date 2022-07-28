@@ -1,5 +1,5 @@
 ## Bear App
-# Countries Flag
+
 ## https://bear-app-black.vercel.app/
 
 ## Maybe today is not Friday, but you can always prepare for it =)
