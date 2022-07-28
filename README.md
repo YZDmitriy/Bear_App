@@ -1,4 +1,4 @@
-## Bear App
+## Bear_Store
 
 ## https://bear-app-black.vercel.app/
 
